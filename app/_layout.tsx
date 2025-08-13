@@ -9,7 +9,11 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    RobotoBold: require('../assets/fonts/RobotoSlab-Bold.ttf'),
+    RobotoRegular: require('../assets/fonts/RobotoSlab-Regular.ttf'),
+    RobotoMedium: require('../assets/fonts/RobotoSlab-Medium.ttf'),
+    RobotoSemiBold: require('../assets/fonts/RobotoSlab-Regular.ttf'),
+
   });
 
   if (!loaded) {
@@ -19,8 +23,10 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack screenOptions={{headerShown: false}}>
+        <Stack.Screen name='splash' />
+        <Stack.Screen name='onBoarding'/>
+        <Stack.Screen name="(tabs)"  />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
